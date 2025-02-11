@@ -1,0 +1,96 @@
+/* Reset de margens e paddings */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Contêiner para as imagens */
+.images-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Garante que as imagens se ajustem em várias linhas, se necessário */
+    margin: 20px;
+}
+
+.image-container {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin: 10px;
+    max-width: 30%; /* 3 imagens lado a lado */
+    flex-grow: 1;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Background preto enquanto a imagem está expandida */
+.expanded-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo preto com transparência */
+    z-index: 5;
+}
+
+/* Estilos para a imagem expandida */
+.expanded-image {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.expanded-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Estilo para quando a imagem estiver expandida */
+.expanded-background.show,
+.expanded-image.show {
+    display: block;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    .images-container {
+    justify-content: space-between;
+    }
+
+    .expanded-image img {
+    max-width: 90%;
+    }
+
+    .image-container {
+    max-width: 45%; /* Duas imagens por linha em tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .expanded-image {
+    max-width: 95%;
+    }
+
+    .expanded-image img {
+    max-width: 95%;
+    height: auto;
+    }
+
+    .image-container {
+    max-width: 90%; /* Uma imagem por linha em smartphones */
+    }
+}
